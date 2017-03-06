@@ -8,7 +8,7 @@ import User from '../models/user';
 let router = express.Router();
 
 function validateInput(data, otherValidations) {
-  let { errors } = otherValidations(data);
+  /*let { errors } = otherValidations(data);
 
   return User.query({
     where: { email: data.email },
@@ -27,23 +27,36 @@ function validateInput(data, otherValidations) {
       errors,
       isValid: isEmpty(errors)
     };
-  })
+  })*/
 
 }
 
 router.get('/:identifier', (req, res) => {
-  User.query({
+ /* User.query({
     select: [ 'username', 'email' ],
     where: { email: req.params.identifier },
     orWhere: { username: req.params.identifier }
   }).fetch().then(user => {
     res.json({ user });
-  });
+  });*/
 });
 
 
 router.post('/', (req, res) => {
-  validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
+  console.log('res', req.body);
+  User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+      timezone: req.body.timezone
+  }).then(res => {
+        console.log('res', res);
+      })
+      .catch(err => {
+        console.log('err', err);
+      });
+
+  /*validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
     if (isValid) {
       const { username, password, timezone, email } = req.body;
       const password_digest = bcrypt.hashSync(password, 10);
@@ -57,7 +70,7 @@ router.post('/', (req, res) => {
     } else {
       res.status(400).json(errors);
     }
-  });
+  });*/
 
 });
 

@@ -7,9 +7,20 @@ import config from '../config';
 let router = express.Router();
 
 router.post('/', (req, res) => {
-  const { identifier, password } = req.body;
 
-  User.query({
+  User.find({
+    email: req.body.email
+  })
+      .then(res => {
+        console.log('res', res);
+      })
+      .catch(err => {
+        console.error('err', err);
+      });
+
+  // const { identifier, password } = req.body;
+
+  /*User.query({
     where: { username: identifier },
     orWhere: { email: identifier }
   }).fetch().then(user => {
@@ -26,7 +37,7 @@ router.post('/', (req, res) => {
     } else {
       res.status(401).json({ errors: { form: 'Invalid Credentials' } });
     }
-  });
+  });*/
 });
 
 export default router;

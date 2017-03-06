@@ -1,3 +1,4 @@
 export default {
-  jwtSecret: 'somesecretkeyforjsonwebtoken'
+  jwtSecret: 'somesecretkeyforjsonwebtoken',
+  uri: 'mongodb://localhost/mernDatabase'
 }
