@@ -19,7 +19,6 @@ router.post('/', (req, res) => {
       });
 
   // const { identifier, password } = req.body;
-
   /*User.query({
     where: { username: identifier },
     orWhere: { email: identifier }

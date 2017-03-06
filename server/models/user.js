@@ -5,9 +5,12 @@ import mongoose, {Schema} from 'mongoose';
 });*/
 let UserSchema = new Schema({
     username : {type: String},
-    email: {type: String},
-    password: {type: String},
-    timezone: {type: String},
+    email: {
+    	type: String,
+    	index: { unique: true }
+    },
+    password: { type: String },
+    timezone: { type: String },
 
 });
 // export default UserSchema;

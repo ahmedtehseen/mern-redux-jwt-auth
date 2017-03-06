@@ -32,25 +32,26 @@ function validateInput(data, otherValidations) {
 }
 
 router.get('/:identifier', (req, res) => {
- /* User.query({
+  User.query({
     select: [ 'username', 'email' ],
     where: { email: req.params.identifier },
     orWhere: { username: req.params.identifier }
   }).fetch().then(user => {
     res.json({ user });
-  });*/
+  });
 });
 
 
 router.post('/', (req, res) => {
-  console.log('res', req.body);
+  console.log('signup route res 1', req.body);
   User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
       timezone: req.body.timezone
   }).then(res => {
-        console.log('res', res);
+        console.log('signup route res 2', res);
+        res.json({ success: true});
       })
       .catch(err => {
         console.log('err', err);

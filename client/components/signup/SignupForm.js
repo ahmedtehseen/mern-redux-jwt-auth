@@ -62,9 +62,10 @@ class SignupForm extends React.Component {
 
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true });
-        console.log('this.state', this.state);
+        console.log('this.state:', this.state);
         this.props.userSignupRequest(this.state).then(
         () => {
+          console.log('chal raha hai.........!');
           this.props.addFlashMessage({
             type: 'success',
             text: 'You signed up successfully. Welcome!'
@@ -89,7 +90,7 @@ class SignupForm extends React.Component {
           error={errors.username}
           label="Username"
           onChange={this.onChange}
-          checkUserExists={this.checkUserExists}
+
           value={this.state.username}
           field="username"
         />
@@ -98,7 +99,7 @@ class SignupForm extends React.Component {
           error={errors.email}
           label="Email"
           onChange={this.onChange}
-          checkUserExists={this.checkUserExists}
+     
           value={this.state.email}
           field="email"
         />
@@ -147,7 +148,7 @@ class SignupForm extends React.Component {
 SignupForm.propTypes = {
   userSignupRequest: React.PropTypes.func.isRequired,
   addFlashMessage: React.PropTypes.func.isRequired,
-  isUserExists: React.PropTypes.func.isRequired
+  // isUserExists: React.PropTypes.func.isRequired
 }
 
 SignupForm.contextTypes = {
