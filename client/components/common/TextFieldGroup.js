@@ -14,7 +14,8 @@ const TextFieldGroup = ({ field, value, label, error, type, onChange, checkUserE
         className="form-control"
       />
     {error && <span className="help-block">{error}</span>}
-    </div>  );
+    </div>  
+  );
 }
 
 TextFieldGroup.propTypes = {

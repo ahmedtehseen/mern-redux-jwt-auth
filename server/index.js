@@ -13,6 +13,7 @@ import events from './routes/events';
 
 let app = express();
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.uri);
 app.use(bodyParser.json());
 

@@ -1,9 +1,9 @@
 // import bookshelf from '../bookshelf';
-import mongoose, {Schema} from 'mongoose';
+import mongoose from 'mongoose';
 /*export default bookshelf.Model.extend({
   tableName: 'users'
 });*/
-let UserSchema = new Schema({
+let UserSchema = new mongoose.Schema({
     username : {type: String},
     email: {
     	type: String,

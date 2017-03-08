@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      identifier: '',
+      email: '',
       password: '',
       errors: {},
       isLoading: false
@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
       this.setState({ errors: {}, isLoading: true });
       this.props.login(this.state).then(
         (res) => this.context.router.push('/'),
-        (err) => console.log('errrrr', err)
+        (err) => this.setState({ errors: { form:"Invalid Username or password" }, isLoading: false })
       );
     }
   }
@@ -44,19 +44,18 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { errors, identifier, password, isLoading } = this.state;
-
+    const { errors, email, password, isLoading } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
         <h1>Login</h1>
 
-        { errors.form && <div className="alert alert-danger">{errors.form}</div> }
+       { errors.form ? <div className="alert alert-danger">{errors.form}</div>: '' }
 
         <TextFieldGroup
-          field="identifier"
+          field="email"
           label="Username / Email"
-          value={identifier}
-          error={errors.identifier}
+          value={email}
+          error={errors.email}
           onChange={this.onChange}
         />
 
